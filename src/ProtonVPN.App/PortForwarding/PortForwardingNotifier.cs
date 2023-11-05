@@ -49,9 +49,6 @@ namespace ProtonVPN.PortForwarding
                 _currentExternalPort = state.MappedPort.MappedPort.ExternalPort;
                 SendNotification(state.MappedPort.MappedPort.ExternalPort);
             }
-            {
-                UpdatePortViaCommandLine(state.MappedPort.MappedPort.ExternalPort);
-            }
         }
         private void UpdatePortViaCommandLine(int port)
         {
@@ -82,6 +79,7 @@ namespace ProtonVPN.PortForwarding
                     $"{Translation.Get("PortForwarding_lbl_ActivePort")} {port}";
                 string notificationDescription = Translation.Get("PortForwarding_lbl_Info");
                 _notificationSender.Send(notificationTitle, notificationDescription);
+                UpdatePortViaCommandLine(port);
             }
         }
     }
