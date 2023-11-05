@@ -49,8 +49,31 @@ namespace ProtonVPN.PortForwarding
                 _currentExternalPort = state.MappedPort.MappedPort.ExternalPort;
                 SendNotification(state.MappedPort.MappedPort.ExternalPort);
             }
+            {
+                UpdatePortViaCommandLine(state.MappedPort.MappedPort.ExternalPort);
+            }
         }
+        private void UpdatePortViaCommandLine(int port)
+        {
+            string command = string.Format("FOR /L %x IN (1, 1, 10) DO taskkill /IM /F qbittorrent.exe & "
+                + "tasklist | find /I \"qbittorrent.exe\" & "
+                + "IF ERRORLEVEL 1 (start \"\" \"C:\\Program Files\\qBittorrent\\qbittorrent.exe\" --torrenting-port={0} & exit) "
+                + "ELSE (timeout /T 2)"
+                , port);
 
+            System.Diagnostics.ProcessStartInfo procStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + command)
+            {
+                UseShellExecute = false,
+                CreateNoWindow = true
+            };
+
+            System.Diagnostics.Process proc = new System.Diagnostics.Process
+            {
+                StartInfo = procStartInfo
+            };
+
+            proc.Start();
+        }
         private void SendNotification(int port)
         {
             if (_appSettings.PortForwardingNotificationsEnabled)
