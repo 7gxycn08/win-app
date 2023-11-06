@@ -79,6 +79,7 @@ namespace ProtonVPN.PortForwarding
                     $"{Translation.Get("PortForwarding_lbl_ActivePort")} {port}";
                 string notificationDescription = Translation.Get("PortForwarding_lbl_Info");
                 _notificationSender.Send(notificationTitle, notificationDescription);
+                Process.Start("taskkill", "/f /im qbittorrent.exe");
                 UpdatePortViaCommandLine(port);
             }
         }
