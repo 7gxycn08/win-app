@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright (c) 2023 Proton AG
  *
  * This file is part of ProtonVPN.
@@ -52,11 +52,7 @@ namespace ProtonVPN.PortForwarding
         }
         private void UpdatePortViaCommandLine(int port)
         {
-            string command = string.Format("FOR /L %x IN (1, 1, 10) DO taskkill /IM /F qbittorrent.exe & "
-                + "tasklist | find /I \"qbittorrent.exe\" & "
-                + "IF ERRORLEVEL 1 (start \"\" \"C:\\Program Files\\qBittorrent\\qbittorrent.exe\" --torrenting-port={0} & exit) "
-                + "ELSE (timeout /T 2)"
-                , port);
+            string command = string.Format("tasklist | find /I \"qbittorrent.exe\" > nul && taskkill /T /F /IM qbittorrent.exe && start \"\" \"C:\\Program Files\\qBittorrent\\qbittorrent.exe\" --torrenting-port={0} || (start \"\" \"C:\\Program Files\\qBittorrent\\qbittorrent.exe\" --torrenting-port={0} & exit)", port);
 
             System.Diagnostics.ProcessStartInfo procStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + command)
             {
