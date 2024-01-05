@@ -1789,13 +1789,13 @@
     <value>Сотни серверов в {0} стране</value>
   </data>
   <data name="Dialogs_SubscriptionExpired_ListOption1_Few">
-    <value>Hundreds of servers in {0} countries</value>
+    <value>Сотни серверов в {0} странах</value>
   </data>
   <data name="Dialogs_SubscriptionExpired_ListOption1_Many">
-    <value>Hundreds of servers in {0} countries</value>
+    <value>Сотни серверов в {0} странах</value>
   </data>
   <data name="Dialogs_SubscriptionExpired_ListOption1_Other">
-    <value>Сотни серверов в {0} странах</value>
+    <value>Сотни серверов в {0} страны</value>
   </data>
   <data name="Dialogs_SubscriptionExpired_ListOption2">
     <value>Подключайте до 10 устройств одновременно</value>
@@ -2799,7 +2799,7 @@
     <comment>Do not translate whatever is between &lt; and &gt;. Do not forget to translate the "Learn more".</comment>
   </data>
   <data name="Settings_Advanced_lbl_PortForwarding_Tooltip">
-    <value>Speed up your torrenting and online gaming by allowing supported local apps to be reachable from the internet.</value>
+    <value>Ускорьте ваши торренты и онлайн-игры, разрешив интернет-доступ к поддерживаемым локальным приложениям.</value>
   </data>
   <data name="Settings_Advanced_lbl_SplitTunnel">
     <value>Раздельное туннелирование</value>
@@ -3011,7 +3011,7 @@ This setting instructs the Proton VPN to start automatically when the user logs 
     <comment>Tooltip message shown in sidebar connection status box when hovered on exclamation mark icon</comment>
   </data>
   <data name="Sidebar_Countries_AllLocationCount">
-    <value>Plus locations ({0})</value>
+    <value>Местоположения Plus ({0})</value>
   </data>
   <data name="Sidebar_Countries_BasicAndPlusLocationCount">
     <value>Местоположения BASIC и PLUS ({0})</value>
@@ -3234,14 +3234,14 @@ This setting instructs the Proton VPN to start automatically when the user logs 
     <value>Even higher VPN speed</value>
   </data>
   <data name="Upsell_Countries_StreamMovies">
-    <value>Stream your favorite movies</value>
+    <value>Смотрите любимые фильмы</value>
   </data>
   <data name="Upsell_Countries_Subtitle">
     <value>Когда вы улучшите до Plus</value>
     <comment>The message disaplyed in plus upgrade modal window</comment>
   </data>
   <data name="Upsell_Countries_Title">
-    <value>Access over {0} in {1}</value>
+    <value>Доступ через {0} к {1}</value>
     <comment>The message displayed in plus upgrade modal window. {0} is a placeholder for "X secure servers" (Secure_Servers_lbl) and {1} for "X countries" (Countries_lbl).</comment>
   </data>
   <data name="Upsell_Country_Bullet1_One">

@@ -30,18 +30,27 @@ namespace ProtonVPN.UI.Tests.Results
 
         public LoginResult CheckIfLoginErrorIsDisplayed()
         {
-            return WaitUntilElementExistsByClassName("LoginErrorView", TestConstants.MediumTimeout);
+            return WaitUntilElementExistsByClassName("LoginErrorView", TestData.MediumTimeout);
         }
 
         public LoginResult CheckIfLoginWindowIsDisplayed()
         {
-            return WaitUntilElementExistsByAutomationId("LoginInput", TestConstants.VeryShortTimeout);
+            return WaitUntilElementExistsByAutomationId("LoginInput", TestData.VeryShortTimeout);
         }
 
         public LoginResult CheckIfZeroAssignedConnectionsModalIsShown()
         {
-            WaitUntilElementExistsByClassName("AssignVpnConnections", TestConstants.MediumTimeout);
-            WaitUntilElementExistsByName("Assign VPN connections", TestConstants.MediumTimeout);
+            WaitUntilElementExistsByClassName("AssignVpnConnections", TestData.MediumTimeout);
+            WaitUntilElementExistsByName("Assign VPN connections", TestData.MediumTimeout);
+            return this;
+        }
+
+        public LoginResult CheckIfForceUpdateModalIsDisplayed()
+        {
+            DesktopActions actions = new DesktopActions();
+            actions.WaitUntilExistsByName("Quit", TestData.MediumTimeout);
+            actions.WaitUntilExistsByName("Update", TestData.MediumTimeout);
+            actions.WaitUntilExistsByName("Attention", TestData.ShortTimeout);
             return this;
         }
     }

@@ -30,14 +30,14 @@ namespace ProtonVPN.UI.Tests
     {
         protected AutomationElement Desktop;
 
-        protected dynamic WaitUntilExistsByName(string name, TimeSpan time)
+        public dynamic WaitUntilExistsByName(string name, TimeSpan time)
         {
             RetryResult<AutomationElement> retry = Retry.WhileNull(
                 () => {
                     RefreshDesktop();
                     return Desktop.FindFirstDescendant(cf => cf.ByName(name));
                 },
-                time, TestConstants.RetryInterval);
+                time, TestData.RetryInterval);
 
             if (!retry.Success)
             {
@@ -53,7 +53,7 @@ namespace ProtonVPN.UI.Tests
                     RefreshDesktop();
                     return Desktop.FindFirstDescendant(cf => cf.ByAutomationId(automationId));
                 },
-                time, TestConstants.RetryInterval);
+                time, TestData.RetryInterval);
             if (!retry.Success)
             {
                 Assert.Fail("Failed to get " + automationId + " element within " + time.Seconds + " seconds.");
@@ -72,7 +72,7 @@ namespace ProtonVPN.UI.Tests
                     }
                     return Desktop.FindFirstDescendant(cf => cf.ByAutomationId(automationId)).IsOffscreen;
                 },
-                time, TestConstants.RetryInterval);
+                time, TestData.RetryInterval);
 
             if (!retry.Success)
             {
@@ -92,7 +92,7 @@ namespace ProtonVPN.UI.Tests
                     }
                     return Desktop.FindFirstDescendant(cf => cf.ByName(name)).IsOffscreen;
                 },
-                time, TestConstants.RetryInterval);
+                time, TestData.RetryInterval);
 
             if (!retry.Success)
             {
@@ -109,7 +109,7 @@ namespace ProtonVPN.UI.Tests
                     RefreshDesktop();
                     return Desktop.FindFirstDescendant(cf => cf.ByClassName(className));
                 },
-                time, TestConstants.RetryInterval);
+                time, TestData.RetryInterval);
 
             if (!retry.Success)
             {
@@ -120,19 +120,19 @@ namespace ProtonVPN.UI.Tests
 
         protected AutomationElement ElementByAutomationId(string automationId)
         {
-            WaitUntilExistsByAutomationId(automationId, TestConstants.ShortTimeout);
+            WaitUntilExistsByAutomationId(automationId, TestData.ShortTimeout);
             return Desktop.FindFirstDescendant(cf => cf.ByAutomationId(automationId));
         }
 
         protected AutomationElement ElementByClassName(string className)
         {
-            WaitUntilDisplayedByClass(className, TestConstants.ShortTimeout);
+            WaitUntilDisplayedByClass(className, TestData.ShortTimeout);
             return Desktop.FindFirstDescendant(cf => cf.ByClassName(className));
         }
 
         protected AutomationElement ElementByName(string name)
         {
-            WaitUntilExistsByName(name, TestConstants.ShortTimeout);
+            WaitUntilExistsByName(name, TestData.ShortTimeout);
             return Desktop.FindFirstDescendant(cf => cf.ByName(name));
         }
 
